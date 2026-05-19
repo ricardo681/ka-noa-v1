@@ -1,0 +1,197 @@
+/* ============================================================
+   KA NOA — Foundations
+   Colors & Typography
+   ============================================================
+   ASSUMPTIONS (flag for client review — brandbook PDF missing):
+   - Palette inferred from doodles (tribal/woven motifs) and the
+     "Ka Noa" name (Polynesian roots). Direction: warm-earth +
+     artisan-modern. Cream ground, ink text, terracotta accent,
+     olive secondary. REVIEW against brandbook.
+   - Display face: ZalandoSansExpanded Medium (provided)
+   - Body face:    Poppins Regular (provided)
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+@font-face {
+  font-family: "Zalando Sans Expanded";
+  src: url("fonts/ZalandoSansExpanded-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ============ COLOR TOKENS (base) ============ */
+  /* Ground — warm, paper-like neutrals */
+  --kn-bone:        #F4EFE6;   /* page bg light, lightest */
+  --kn-cream:       #EAE2D2;   /* card bg, soft section */
+  --kn-sand:        #D7CAB1;   /* hover surfaces, dividers */
+  --kn-clay-light:  #C8A981;   /* tonal accent */
+
+  /* Dark — the brand's primary world */
+  --kn-black:       #0E0E0E;   /* primary dark bg / garments */
+  --kn-ink:         #1C1A17;   /* legacy alias for kn-black */
+  --kn-charcoal:    #2A2A2A;   /* secondary dark */
+  --kn-graphite:    #4A4A4A;   /* mid grey, neutral garment */
+  --kn-stone:       #8A8A8A;   /* muted text on dark */
+  --kn-pebble:      #B5B5B5;   /* hint text */
+
+  /* Brand — Ka Noa orange (sampled from official key visual) */
+  --kn-orange:      #C85A18;   /* PRIMARY accent — official brand orange */
+  --kn-orange-deep: #9E4410;   /* hover / pressed */
+  --kn-orange-soft: #E8A07A;   /* soft tint, rarely used */
+
+  /* Legacy aliases (kept so existing components keep working) */
+  --kn-terracotta:  var(--kn-orange);
+  --kn-terracotta-deep: var(--kn-orange-deep);
+  --kn-ochre:       #C68A2E;
+  --kn-olive:       #6A6B3A;
+  --kn-moss:        #4A4F2C;
+  --kn-indigo:      #2B3A55;
+
+  /* Status (sparing use) */
+  --kn-positive:    #4A6B3A;
+  --kn-warning:     #DC8A1E;
+  --kn-danger:      #B23E12;
+
+  /* ============ SEMANTIC TOKENS ============ */
+  --bg:            var(--kn-bone);
+  --bg-elevated:   #FBF8F1;
+  --bg-soft:       var(--kn-cream);
+  --bg-strong:     var(--kn-black);
+
+  --fg:            var(--kn-black);
+  --fg-muted:      var(--kn-graphite);
+  --fg-soft:       var(--kn-stone);
+  --fg-on-dark:    var(--kn-bone);
+
+  --border:        rgba(14, 14, 14, 0.12);
+  --border-strong: rgba(14, 14, 14, 0.28);
+
+  --accent:        var(--kn-orange);
+  --accent-deep:   var(--kn-orange-deep);
+  --accent-soft:   var(--kn-orange-soft);
+
+  /* ============ TYPE FAMILIES ============ */
+  /* Per brandbook: Zalando Sans Expanded Medium = titles ("forte, presença, impactante")
+     Poppins Regular = corpo ("boa leitura, objetiva") */
+  --font-display:  "Zalando Sans Expanded", "Anton", "Bebas Neue", system-ui, sans-serif;
+  --font-wordmark: "Zalando Sans Expanded", system-ui, sans-serif;
+  --font-body:     "Poppins", system-ui, -apple-system, sans-serif;
+
+  /* ============ TYPE SCALE ============ */
+  --t-display-1: clamp(56px, 9vw, 132px);
+  --t-display-2: clamp(44px, 7vw, 96px);
+  --t-h1:        clamp(40px, 5vw, 72px);
+  --t-h2:        clamp(32px, 4vw, 52px);
+  --t-h3:        clamp(24px, 2.4vw, 34px);
+  --t-h4:        22px;
+  --t-h5:        18px;
+  --t-body:      16px;
+  --t-small:     14px;
+  --t-caption:   12px;
+  --t-overline:  11px;
+
+  /* ============ SPACING (8px base) ============ */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+  --s-10: 128px;
+
+  /* ============ RADII ============ */
+  --r-none: 0px;       /* default — Ka Noa leans rectilinear */
+  --r-sm:   2px;
+  --r-md:   4px;
+  --r-lg:   8px;
+  --r-pill: 999px;
+
+  /* ============ SHADOWS ============ */
+  --shadow-sm: 0 1px 2px rgba(28,26,23,0.06);
+  --shadow-md: 0 6px 18px -8px rgba(28,26,23,0.18);
+  --shadow-lg: 0 24px 48px -16px rgba(28,26,23,0.24);
+
+  /* ============ MOTION ============ */
+  --ease-out:    cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.6, 0, 0.2, 1);
+  --dur-fast:    160ms;
+  --dur-med:     280ms;
+  --dur-slow:    520ms;
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT STYLES
+   Use these by default; override with utilities when needed.
+   ============================================================ */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, .display-1, .display-2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 1.02;
+  color: var(--fg);
+  text-transform: none;
+  margin: 0;
+}
+
+.display-1 { font-size: var(--t-display-1); line-height: 0.92; letter-spacing: -0.02em; }
+.display-2 { font-size: var(--t-display-2); line-height: 0.96; letter-spacing: -0.015em; }
+h1 { font-size: var(--t-h1); }
+h2 { font-size: var(--t-h2); }
+h3 { font-size: var(--t-h3); line-height: 1.08; }
+h4 { font-size: var(--t-h4); line-height: 1.2; }
+h5 { font-size: var(--t-h5); line-height: 1.3; }
+
+p { margin: 0; max-width: 62ch; }
+.lede { font-size: 19px; line-height: 1.5; color: var(--fg-muted); }
+.body { font-size: var(--t-body); line-height: 1.6; }
+.small { font-size: var(--t-small); }
+.caption { font-size: var(--t-caption); color: var(--fg-muted); }
+
+.overline {
+  font-family: var(--font-body);
+  font-size: var(--t-overline);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  font-weight: 500;
+}
+
+/* Display tag — for KA NOA branded headers, all-caps signature look */
+.signature {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+a { color: inherit; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: var(--accent); }
+
+/* Utility helpers */
+.ink-on-dark { color: var(--fg-on-dark); }
+.bg-bone { background: var(--kn-bone); }
+.bg-cream { background: var(--kn-cream); }
+.bg-ink { background: var(--kn-ink); color: var(--fg-on-dark); }
+.bg-terracotta { background: var(--kn-terracotta); color: var(--fg-on-dark); }
