@@ -1,0 +1,68 @@
+/* eslint-disable */
+// Ka Noa — Linhas de Produto (Remos · Vestuário · Acessórios)
+const linhas = [
+  {
+    id: 1,
+    name: "Remos",
+    desc: "Performance e precisão. Modelos para diferentes estilos de remada, do treino diário às provas de longa distância.",
+    cta: "Ver remos",
+    img: "sleeve-orange.jpg",
+    res: "imgSleeveOrange",
+    doodle: 3,
+  },
+  {
+    id: 2,
+    name: "Vestuário",
+    desc: "Camisetas UV, rashguards, bermudas e bonés com grafismos autorais. Tecido que respira, seca rápido e resiste ao sal.",
+    cta: "Ver vestuário",
+    img: "row-your-flow-back.jpg",
+    res: "imgRowBack",
+    doodle: 14,
+    tag: "Carro-chefe",
+  },
+  {
+    id: 3,
+    name: "Acessórios",
+    desc: "Capas de remo, leashes, suportes, garrafas, kits de transporte. Os detalhes que fazem a diferença na sessão.",
+    cta: "Ver acessórios",
+    img: "cap-ocean.jpg",
+    res: "imgCapOcean",
+    doodle: 22,
+  },
+];
+
+const Vestuario = () => (
+  <section className="kn-linhas" id="produtos">
+    <header className="kn-linhas__head">
+      <div className="kn-linhas__title">
+        <span className="overline">linhas de produto</span>
+        <h2>equipado<br/>para <em>fluir.</em></h2>
+        <p className="lede">
+          Tudo o que você precisa para remar, treinar e representar.
+          Sem genérico, sem improviso.
+        </p>
+      </div>
+    </header>
+    <div className="kn-linhas__grid">
+      {linhas.map(item => (
+        <article key={item.id} className="kn-linhas__item">
+          <div className="kn-linhas__img" style={{ backgroundImage: `url(${(window.__resources && window.__resources[item.res]) || `../../assets/brand/${item.img}`})` }}>
+            <Doodle n={item.doodle} className="kn-linhas__doodle" />
+            {item.tag && <span className="kn-linhas__tag">{item.tag}</span>}
+          </div>
+          <div className="kn-linhas__meta">
+            <h3>{item.name}</h3>
+            <p>{item.desc}</p>
+            <a className="kn-linhas__cta">{item.cta} <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p className="kn-linhas__notice">
+      Os preços do site são preços públicos finais.
+      <strong> Compre por um clube parceiro</strong> e tenha condições exclusivas.
+    </p>
+  </section>
+);
+
+Object.assign(window, { Vestuario });

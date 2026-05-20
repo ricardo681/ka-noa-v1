@@ -1,0 +1,49 @@
+/* eslint-disable */
+// Ka Noa — Manifesto
+const Manifesto = () => (
+  <section className="kn-manifesto" id="manifesto">
+    <div className="kn-manifesto__top">
+      <span className="overline">manifesto · 01</span>
+      <div className="kn-manifesto__doodles">
+        <Doodle n={6} />
+        <Doodle n={14} />
+        <Doodle n={22} />
+      </div>
+    </div>
+    <h2 className="kn-manifesto__title">
+      antes de ser esporte,<br/>
+      o va'a é <em>tradição.</em>
+    </h2>
+    <div className="kn-manifesto__body">
+      <p>
+        A canoa havaiana atravessou oceanos por mais de mil anos antes de
+        chegar ao Brasil. Cada remada carrega uma história ancestral de
+        quem confiou no mar para encontrar família, terra e propósito.
+      </p>
+      <p>
+        Hoje somos cerca de 50 mil praticantes no país. Gente que acorda
+        antes do sol, vai pra raia, treina no frio, no calor, no vento.
+        Gente que sente que faz parte de algo maior toda vez que entra
+        na canoa.
+      </p>
+      <p>
+        Até agora, faltava uma marca que falasse a nossa língua. Que
+        entendesse que vestir uma camiseta UV não é só proteção, é
+        identidade. Que um remo não é só ferramenta, é extensão do corpo.
+        Que um clube não é só treino, é ohana.
+      </p>
+      <p className="kn-manifesto__close">
+        Ka Noa nasceu pra isso. <em>Pra ser a casa de quem rema.</em>
+      </p>
+    </div>
+    <div className="kn-manifesto__pull">
+      <Doodle n={9} className="kn-manifesto__pull-doodle" />
+      <p>
+        não vendemos produto.<br/>
+        carregamos uma cultura <em>na água.</em>
+      </p>
+    </div>
+  </section>
+);
+
+Object.assign(window, { Manifesto });

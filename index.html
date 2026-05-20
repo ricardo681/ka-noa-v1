@@ -1,0 +1,57 @@
+/* eslint-disable */
+// Ka Noa — Comunidade (cadastro do remador individual)
+const Newsletter = () => {
+  const [form, setForm] = React.useState({ nome: "", email: "", cidade: "", clube: "" });
+  const [done, setDone] = React.useState(false);
+  const update = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+  const submit = (e) => { e.preventDefault(); setDone(true); };
+
+  return (
+    <section className="kn-comunidade" id="comunidade">
+      <div className="kn-comunidade__doodle">
+        <Doodle n={24} />
+      </div>
+      <span className="overline">para o remador</span>
+      <h3>faça parte da comunidade<br/>que <em>move o va'a.</em></h3>
+      <p className="lede">
+        Se você rema, esse lugar é seu. Cadastre o seu e-mail e receba conteúdo
+        técnico, calendário nacional de competições, lançamentos antes de todo
+        mundo e a lista atualizada de clubes parceiros Ka Noa na sua região.
+      </p>
+
+      {!done ? (
+        <form className="kn-comunidade__form" onSubmit={submit}>
+          <label className="kn-comunidade__field">
+            <span>Nome</span>
+            <input value={form.nome} onChange={update("nome")} required placeholder="Seu nome" />
+          </label>
+          <label className="kn-comunidade__field">
+            <span>E-mail</span>
+            <input type="email" value={form.email} onChange={update("email")} required placeholder="seu@email.com" />
+          </label>
+          <label className="kn-comunidade__field">
+            <span>Cidade</span>
+            <input value={form.cidade} onChange={update("cidade")} required placeholder="Florianópolis · SC" />
+          </label>
+          <label className="kn-comunidade__field">
+            <span>Você rema em qual clube? <em>(opcional)</em></span>
+            <input value={form.clube} onChange={update("clube")} placeholder="Nome do clube" />
+          </label>
+          <div className="kn-comunidade__actions">
+            <button type="submit" className="kn-btn kn-btn--primary">Entrar na comunidade</button>
+            <span className="kn-comunidade__note">
+              Sem spam. Uma comunicação por semana, no máximo.
+            </span>
+          </div>
+        </form>
+      ) : (
+        <div className="kn-comunidade__thanks">
+          <strong>Bem-vindo à comunidade.</strong>
+          <span>Você vai receber a primeira carta no próximo final de semana.</span>
+        </div>
+      )}
+    </section>
+  );
+};
+
+Object.assign(window, { Newsletter });
