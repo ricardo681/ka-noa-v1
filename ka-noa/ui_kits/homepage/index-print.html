@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ka Noa — Homepage (PDF)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="sections.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    /* ============================================================
+       PRINT STYLES — Ka Noa homepage
+       ============================================================ */
+    html, body { background: var(--bg); }
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* On-screen preview: simulate a paged document */
+    @media screen {
+      body {
+        max-width: 1200px;
+        margin: 0 auto;
+        box-shadow: 0 0 40px rgba(0,0,0,0.08);
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        width: 100% !important;
+      }
+
+      /* Header: pin to top of first page only, not sticky */
+      .kn-header {
+        position: absolute !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        border-bottom: 0 !important;
+      }
+
+      /* Marquee: disable animation, show static row */
+      .kn-marquee__track {
+        animation: none !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        white-space: normal !important;
+        padding: 0 24px !important;
+      }
+      .kn-marquee { break-inside: avoid; }
+
+      /* Hero: ensure key visual prints with full bg */
+      .kn-hero--keyvisual {
+        page-break-after: always;
+        break-after: page;
+        min-height: 100vh !important;
+        height: 100vh !important;
+      }
+      .kn-hero__bg { filter: grayscale(1) contrast(1.05) brightness(0.88) !important; }
+
+      /* Each major section starts on a new page where it makes sense */
+      .kn-manifesto,
+      .kn-collection,
+      .kn-apparel,
+      .kn-depoimentos,
+      .kn-agenda,
+      .kn-lojistas,
+      .kn-newsletter,
+      .kn-footer {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      /* Avoid splitting cards or quote blocks */
+      .kn-collection__item,
+      .kn-apparel__item,
+      .kn-agenda__item,
+      .kn-lojistas__col,
+      .kn-depoimentos__stage,
+      .kn-manifesto__stats > div,
+      .kn-newsletter__form {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Remove hover/scroll/transition effects */
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+
+      /* Force backgrounds on dark sections to print */
+      .kn-manifesto,
+      .kn-depoimentos,
+      .kn-footer { background: #0E0E0E !important; color: #F4EFE6 !important; }
+
+      .kn-hero__overlay {
+        background: linear-gradient(180deg, rgba(14,14,14,0.55) 0%, rgba(14,14,14,0.25) 35%, rgba(14,14,14,0.65) 100%) !important;
+      }
+
+      /* Reduce vertical padding on long sections so they fit better */
+      .kn-manifesto,
+      .kn-collection,
+      .kn-apparel,
+      .kn-depoimentos,
+      .kn-agenda,
+      .kn-lojistas,
+      .kn-newsletter { padding: 64px 56px !important; }
+      .kn-footer { padding: 64px 56px 24px !important; }
+
+      /* Footer signature shouldn't overflow page */
+      .kn-footer__signature img { height: 100px !important; }
+
+      /* Newsletter form: avoid focus rings/outlines */
+      .kn-newsletter__form input { outline: none !important; }
+
+      /* Hide cursor-related hover affordances */
+      .kn-collection__item,
+      .kn-apparel__item,
+      .kn-agenda__item { cursor: default !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="Buttons.jsx"></script>
+  <script src="doodles-data.js"></script>
+  <script type="text/babel" src="Doodle.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Hero.jsx"></script>
+  <script type="text/babel" src="Marquee.jsx"></script>
+  <script type="text/babel" src="Manifesto.jsx"></script>
+  <script type="text/babel" src="Canoas.jsx"></script>
+  <script type="text/babel" src="Vestuario.jsx"></script>
+  <script type="text/babel" src="Agenda.jsx"></script>
+  <script type="text/babel" src="Lojistas.jsx"></script>
+  <script type="text/babel" src="Depoimentos.jsx"></script>
+  <script type="text/babel" src="Newsletter.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+
+  <script type="text/babel">
+    const PrintApp = () => {
+      React.useEffect(() => {
+        if (window.lucide) window.lucide.createIcons();
+      });
+      return (
+        <React.Fragment>
+          <Header scrolled={false} onMenu={() => {}} />
+          <main>
+            <Hero />
+            <Marquee />
+            <Manifesto />
+            <Canoas />
+            <Vestuario />
+            <Depoimentos />
+            <Agenda />
+            <Lojistas />
+            <Newsletter />
+          </main>
+          <Footer />
+        </React.Fragment>
+      );
+    };
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<PrintApp />);
+
+    // Wait for fonts + render + lucide icons, then trigger print
+    (async () => {
+      try { await document.fonts.ready; } catch (e) {}
+      // Give React a couple ticks + buffer for lucide + images
+      await new Promise(r => setTimeout(r, 1200));
+      window.print();
+    })();
+  </script>
+</body>
+</html>
